@@ -1,7 +1,7 @@
 import Card from "./Card";
 
 const Cards = (props) => {
-  const { characters } = props;
+  const { characters, onClose } = props;
   return (
     <>
       <div className="cards">
@@ -15,7 +15,7 @@ const Cards = (props) => {
               gender={character.gender}
               origin={character.origin.name}
               image={character.image}
-              onClose={() => window.alert("Cerrando card")}
+              onClose={() => onClose(character.id)}
             />
           );
         })}
