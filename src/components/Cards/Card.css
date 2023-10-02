@@ -58,3 +58,7 @@
     margin: 30px;
     font-size: 1rem;
 }
+
+.card p span{
+    text-decoration: underline;
+}

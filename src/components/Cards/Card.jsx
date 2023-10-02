@@ -1,8 +1,7 @@
-import "./Card.css"
+import "./Card.css";
 const Card = (props) => {
+  const { name, status, species, gender, origin, image, onClose } = props;
 
-  const { name, status, species, gender,origin,image, onClose } = props;
-  
   return (
     <div className="card">
       <button className="close" onClick={onClose}>
@@ -13,12 +12,20 @@ const Card = (props) => {
         <h2 className="name bottom-right">{name}</h2>
       </div>
       <div className="container">
-        <p className="left">{species}</p>
-        <p className="right">{gender}</p>
-        <p>{status}</p>
+        <p>
+          <span>Status</span>: {status}
+        </p>
+        <p className="left">
+          <span>Specie</span>: <br /> {species}
+        </p>
+        <p className="right">
+          <span>Gender</span>: <br /> {gender}
+        </p>
       </div>
 
-      <p>{origin}</p>
+      <p className="center">
+        <span>Origin</span>: {origin}
+      </p>
     </div>
   );
 };
