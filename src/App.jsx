@@ -1,9 +1,13 @@
+import axios from "axios";
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import Navbar from "./components/Menu/Navbar";
+import About from "./components/About/About";
 import Home from "./components/Home/Home";
 import Cards from "./components/Cards/Cards";
-import axios from "axios";
-import Navbar from "./components/Menu/Navbar";
-import { useState } from "react";
+import Detail from "./components/Detail/Detail";
+import PATH_ROUTES from "./helpers/pathRoutes";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -14,7 +18,7 @@ function App() {
         method: "GET",
         url: `https://rickandmortyapi.com/api/character/${id}`,
       });
-
+      
       if (data.id) {
         setCharacters((characters) => [...characters, data]);
       } else {
@@ -38,9 +42,16 @@ function App() {
 
   return (
     <>
-      <Home />
       <Navbar onSearch={onSearch} />
-      <Cards characters={characters} onClose={onClose} />
+      <Routes>
+        <Route path={PATH_ROUTES.INDEX} element={<Home />} />
+        <Route
+          path={PATH_ROUTES.HOME}
+          element={<Cards characters={characters} onClose={onClose} />}
+        />
+        <Route path={PATH_ROUTES.ABOUT} element={<About />} />
+        <Route path={PATH_ROUTES.DETAIL + "/:id"} element={<Detail />} />
+      </Routes>
     </>
   );
 }
