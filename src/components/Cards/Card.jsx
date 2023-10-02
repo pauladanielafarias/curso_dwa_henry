@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 import "./Card.css";
-const Card = (props) => {
-  const { name, status, species, gender, origin, image, onClose } = props;
+import PATH_ROUTES from "../../helpers/pathRoutes";
 
+const Card = (props) => {
+  const { id, name, species, gender, image, onClose } = props;
   return (
     <div className="card">
       <button className="close" onClick={onClose}>
@@ -9,12 +11,11 @@ const Card = (props) => {
       </button>
       <div className="container">
         <img src={image} alt="" />
-        <h2 className="name bottom-right">{name}</h2>
+        <Link to={PATH_ROUTES.DETAIL + "/"+id}>
+          <h2 className="name bottom-right">{name}</h2>
+        </Link>
       </div>
       <div className="container">
-        <p>
-          <span>Status</span>: {status}
-        </p>
         <p className="left">
           <span>Specie</span>: <br /> {species}
         </p>
@@ -22,10 +23,6 @@ const Card = (props) => {
           <span>Gender</span>: <br /> {gender}
         </p>
       </div>
-
-      <p className="center">
-        <span>Origin</span>: {origin}
-      </p>
     </div>
   );
 };
