@@ -4,6 +4,9 @@ const Cards = (props) => {
   const { characters, onClose } = props;
   return (
     <>
+      <div>
+        <h1 className="title">Personajes añadidos</h1>
+      </div>
       <div className="cards">
         {characters.map((character) => {
           return (
