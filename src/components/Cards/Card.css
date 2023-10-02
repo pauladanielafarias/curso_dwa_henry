@@ -4,18 +4,17 @@
     justify-content: center;
     align-items: center;
     margin: 10px;
+    margin-top: 5rem;
 }
 
 .card{
-    width: 18rem;
     margin: 10px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0 ,0.75);
     transition: 0.5s;
     background-color: rgba(28, 28, 28, 0.7);
     color: aliceblue; 
-    display: grid;  
-    height: 100vh;
+    height: 75vh;
 }
 
 
