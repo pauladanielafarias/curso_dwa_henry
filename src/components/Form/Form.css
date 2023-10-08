@@ -20,17 +20,37 @@
 }
 
 
-
 .login form label{
     display: block;
     width: 100%;
     font-size: 20px;
     margin-bottom: 10px;
+    margin-top: 10px;
     color: black;
 }
 
 .login form input{
     width: 100%;
+}
+
+.login .error{
+    color: red;
+    font-size: 14px;
     margin-bottom: 20px;
 }
 
+.login form .submit-btn{
+    margin: 20px 0px;
+    background: #1890ff;
+    color: white;
+    padding: 10px;
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.login form .submit-btn:hover{
+    background: #40a9ff;
+}
