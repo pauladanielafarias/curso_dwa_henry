@@ -3,16 +3,21 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./Detail.css";
 
+// Constantes
+import constants from "../../helpers/constants";
+const BACK_URL = constants.BACK_URL;
+
 const Detail = () => {
-  const {id} = useParams();
+  const { id } = useParams();
   const [character, setCharacter] = useState({});
 
   useEffect(() => {
     const getCharacter = async () => {
+      
       try {
         const { data } = await axios({
           method: "GET",
-          url: `https://rickandmortyapi.com/api/character/${id}`,
+          url: `${BACK_URL}/character/${id}`,
         });
         if (data.id) {
           setCharacter(data);
@@ -47,10 +52,7 @@ const Detail = () => {
         <div className="right">
           <img src={character.image} alt="" />
         </div>
-
       </div>
-
-
     </div>
   );
 };
