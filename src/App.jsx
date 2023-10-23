@@ -9,12 +9,16 @@ import Cards from "./components/Cards/Cards";
 import Detail from "./components/Detail/Detail";
 import PATH_ROUTES from "./helpers/pathRoutes";
 
+// Constantes
+import constants from "./helpers/constants";
+const BACK_URL = constants.BACK_URL;
+  
 function App() {
   //Hook de react-router-dom que nos permite acceder a la ruta actual
   const { pathname } = useLocation();
   //Hook de estado que nos permite guardar los personajes que buscamos
   const [characters, setCharacters] = useState([]);
-
+  
   /**
    * Función que se ejecuta cuando se hace una búsqueda
    * @param {*} id - id del personaje a buscar
@@ -25,11 +29,19 @@ function App() {
     try {
       const { data } = await axios({
         method: "GET",
-        url: `https://rickandmortyapi.com/api/character/${id}`,
+        url: `${BACK_URL}/character/${id}`,
       });
 
       if (data.id) {
-        setCharacters((characters) => [...characters, data]);
+        setCharacters((characters) => {
+          if(characters.find((character) => character.id === data.id)){
+            window.alert("¡Ya agregaste este personaje!");
+            return characters;
+          }
+          return [...characters, data];
+        }
+          
+        );
       } else {
         window.alert("¡No hay personajes con el id ingresado!");
       }
