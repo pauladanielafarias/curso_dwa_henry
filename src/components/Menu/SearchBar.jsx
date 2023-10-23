@@ -16,8 +16,13 @@ const SearchBar = (props) => {
         placeholder="ID de tu personaje"
         onChange={handleChange}
         value={id}
+        onKeyUp={() => {
+          if (window.event.keyCode === 13) {
+            onSearch(id);
+          }
+        }}
       />
-      <button className="btn" onClick={()=> onSearch(id)}>
+      <button className="btn" onClick={() => onSearch(id)}>
         Agregar
       </button>
     </div>
