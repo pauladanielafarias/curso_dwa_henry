@@ -6,6 +6,14 @@ const Cards = (props) => {
     <>
       <div>
         <h1 className="title">Personajes añadidos</h1>
+        {characters?.length === 0 ? (
+          <>
+            <p className="description">No hay personajes añadidos</p>
+            <p className="description">
+              Para comenzar, escribe en el buscador el id del personaje que quieras agregar.
+            </p>
+          </>
+        ) : null}
       </div>
       <div className="cards">
         {characters.map((character) => {
